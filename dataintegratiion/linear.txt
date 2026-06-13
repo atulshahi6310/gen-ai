@@ -1,0 +1,415 @@
+In statistics, linear regression is a model that estimates the relationship between a scalar response (dependent variable) and one or more explanatory variables (regressor or independent variable). A model with exactly one explanatory variable is a simple linear regression; a model with two or more explanatory variables is a multiple linear regression. This term is distinct from multivariate linear regression, which predicts multiple correlated dependent variables rather than a single dependent variable.
+In linear regression, the relationships are modeled using linear predictor functions whose unknown model parameters are estimated from the data. Most commonly, the conditional mean of the response given the values of the explanatory variables (or predictors) is assumed to be an affine function of those values; less commonly, the conditional median or some other quantile is used. Like all forms of regression analysis, linear regression focuses on the conditional probability distribution of the response given the values of the predictors, rather than on the joint probability distribution of all of these variables, which is the domain of multivariate analysis.
+Linear regression is also a type of machine learning algorithm, more specifically a supervised algorithm, that learns from the labelled datasets and maps the data points to the most optimized linear functions that can be used for prediction on new datasets.
+Linear regression was the first type of regression analysis to be studied rigorously, and to be used extensively in practical applications. This is because models which depend linearly on their unknown parameters are easier to fit than models which are non-linearly related to their parameters and because the statistical properties of the resulting estimators are easier to determine.
+Linear regression has many practical uses. Most applications fall into one of the following two broad categories:
+
+If the goal is to reduce error, i.e. variance in prediction or forecasting, linear regression can be used to fit a predictive model to an observed data set of values of the response and explanatory variables. After developing such a model, if additional values of the explanatory variables are collected without an accompanying response value, the fitted model can be used to make a prediction of the response.
+If the goal is to explain variation in the response variable that can be attributed to variation in the explanatory variables, linear regression analysis can be applied to quantify the strength of the relationship between the response and the explanatory variables, and in particular to determine whether some explanatory variables may have no linear relationship with the response at all, or to identify which subsets of explanatory variables may contain redundant information about the response.
+Linear regression models are often fitted using the least squares approach, but they may also be fitted in other ways, such as by minimizing the "lack of fit" in some other norm (as with least absolute deviations regression), or by minimizing a penalized version of the least squares cost function as in ridge regression (L2-norm penalty) and lasso (L1-norm penalty). Use of the Mean Squared Error (MSE) as the cost on a dataset that has many large outliers, can result in a model that fits the outliers more than the true data due to the higher importance assigned by MSE to large errors. So, cost functions that are robust to outliers should be used if the dataset has many large outliers. Conversely, the least squares approach can be used to fit models that are not linear models. Thus, although the terms "least squares" and "linear model" are closely linked, they are not synonymous.
+
+
+== Formulation ==
+
+Given a data set 
+  
+    
+      
+        {
+        
+          y
+          
+            i
+          
+        
+        ,
+        
+        
+          x
+          
+            i
+            1
+          
+        
+        ,
+        …
+        ,
+       
+
+In statistics, simple linear regression (SLR) is a linear regression model with a single explanatory variable. That is, it concerns two-dimensional sample points with one independent variable and one dependent variable (conventionally, the x and y coordinates in a Cartesian coordinate system) and finds a linear function (a non-vertical straight line) that, as accurately as possible, predicts the dependent variable values as a function of the independent variable.
+The adjective simple refers to the fact that the outcome variable is related to a single predictor.
+It is common to make the additional stipulation that the ordinary least squares (OLS) method should be used: the accuracy of each predicted value is measured by its squared residual (vertical distance between the point of the data set and the fitted line), and the goal is to make the sum of these squared deviations as small as possible. 
+In this case, the slope of the fitted line is equal to the correlation between y and x corrected by the ratio of standard deviations of these variables. The intercept of the fitted line is such that the line passes through the center of mass (x, y) of the data points.
+
+
+== Formulation and computation ==
+Consider the model function
+
+  
+    
+      
+        y
+        =
+        α
+        +
+        β
+        x
+        ,
+      
+    
+    {\displaystyle y=\alpha +\beta x,}
+  
+
+which describes a line with slope β and y-intercept α. In general, such a relationship may not hold exactly for the largely unobserved population of values of the independent and dependent variables; we call the unobserved deviations from the above equation the errors.   Suppose we observe n data pairs and call them {(xi, yi), i = 1, ..., n}. We can describe the underlying relationship between yi and xi involving this error term εi by
+
+  
+    
+      
+        
+          y
+          
+            i
+          
+        
+        =
+        α
+        +
+        β
+        
+          x
+          
+            i
+          
+        
+        +
+        
+          ε
+          
+            i
+          
+        
+        .
+      
+    
+    {\displaystyle y_{i}=\alpha +\beta x_{i}+\varepsilon _{i}.}
+  
+
+This relationship between the true (but unobserved) underlying parameters α and β and the data points is called a linear regression model.
+The goal is to find estimated values 
+  
+    
+      
+        
+          
+            
+              α
+              ^
+            
+          
+        
+      
+    
+    {\displaystyle {\widehat {\alpha }}}
+  
+ and 
+  
+    
+      
+        
+          
+            
+              β
+              ^
+            
+          
+        
+      
+    
+    {\displaystyle {\widehat {\beta }}}
+  
+ for the parameters α and β which would provide the "best" fit in some sense for the data points. As mentioned in the introduction, in this article the "best" fit will be understood as in the least-squares approach: a line that minimizes the sum of squared residuals (see also Errors and residuals) 
+  
+    
+      
+        
+          
+            
+              
+                ε
+                ^
+              
+            
+          
+          
+            i
+          
+        
+      
+    
+    {\displaystyle {\widehat {\varepsilon }}_{i}}
+  
+ (differences between actual and predicted values of the dependent variable y), each of which is given by, for any candidate parameter values 
+  
+    
+      
+        α
+      
+    
+    {\displaystyle \alpha }
+  
+ and 
+  
+    
+      
+        β
+      
+    
+    {\displaystyle \beta }
+  
+,
+
+  
+    
+      
+        
+          
+            
+              
+                ε
+                ^
+              
+            
+          
+          
+            i
+          
+        
+        =
+        
+          y
+          
+            i
+          
+        
+        −
+        α
+        −
+        β
+        
+          x
+          
+            i
+          
+        
+        .
+      
+    
+    {\displaystyle {\widehat {\varepsilon }}_{i}=y_{i}-\alpha -\beta x_{i}.}
+  
+
+In
+
+The general linear model or general multivariate regression model is a compact way of simultaneously writing several multiple linear regression models. In that sense it is not a separate statistical linear model. The various multiple linear regression models may be compactly written as
+
+  
+    
+      
+        
+          Y
+        
+        =
+        
+          X
+        
+        
+          B
+        
+        +
+        
+          U
+        
+        ,
+      
+    
+    {\displaystyle \mathbf {Y} =\mathbf {X} \mathbf {B} +\mathbf {U} ,}
+  
+
+where Y is a matrix with series of multivariate measurements (each column being a set of measurements on one of the dependent variables), X is a matrix of observations on independent variables that might be a design matrix (each column being a set of observations on one of the independent variables), B is a matrix containing parameters that are usually to be estimated and U is a matrix containing errors (noise). The errors are usually assumed to be uncorrelated across measurements, and follow a multivariate normal distribution. If the errors do not follow a multivariate normal distribution, generalized linear models may be used to relax assumptions about Y and U.
+
+The general linear model (GLM) encompasses several statistical models, including ANOVA, ANCOVA, MANOVA, MANCOVA, and ordinary linear regression. Within this framework, both the t-test and the F-test can be applied. The general linear model is a generalization of multiple linear regression to the case of more than one dependent variable. If Y, B, and U were column vectors, the matrix equation above would represent multiple linear regression.
+Hypothesis tests with the general linear model can be made in two ways: multivariate or as several independent univariate tests. In multivariate tests the columns of Y are tested together, whereas in univariate tests the columns of Y are tested independently, i.e., as multiple univariate tests with the same design matrix.
+
+
+== Comparison to multiple linear regression ==
+
+Multiple linear regression is a generalization of simple linear regression to the case of more than one independent variable, and a special case of general linear models, restricted to one dependent variable. The basic model for multiple linear regression is
+
+  
+    
+      
+        
+          Y
+          
+            i
+          
+        
+        =
+        
+          β
+          
+            0
+          
+        
+        +
+        
+          β
+          
+            1
+          
+        
+        
+          X
+          
+            i
+            1
+          
+        
+        +
+        
+          β
+          
+            2
+          
+        
+        
+          X
+          
+            i
+            2
+          
+        
+        +
+        …
+        +
+        
+          β
+          
+            p
+          
+        
+        
+          X
+          
+            i
+            p
+          
+        
+        +
+        
+          ϵ
+          
+            i
+          
+        
+      
+    
+    {\displaystyle Y_{i}=\beta _{0}+\beta _{1}X_{i1}+\beta _{2}X_{i2}+\ldots +\beta _{p}X_{ip}+\epsilon _{i}}
+  
+ or more compactly 
+  
+    
+      
+        
+          Y
+          
+            i
+          
+        
+        =
+        
+          β
+          
+            0
+          
+        
+        +
+        
+          ∑
+          
+            k
+            =
+            1
+          
+          
+            p
+          
+        
+        
+          
+            β
+            
+              k
+            
+          
+          
+            X
+            
+              i
+              k
+            
+          
+        
+        +
+        
+          ϵ
+          
+            i
+          
+        
+      
+    
+    {\displaystyle Y_{i}=\beta _{0}+\sum \limits _{k=1}^{p}{\beta _{k}X_{ik}}+\epsilon _{i}}
+  
+
+for each observation i = 1, ... , n.
+In the formula above we consider n observations of one dependent variable and p independent variables. Thus, Yi is the ith observati
+
+In statistics, a logistic model (or logit model) is a statistical model that models the log-odds of an event as a linear combination of one or more independent variables. In regression analysis, logistic regression (or logit regression) estimates the parameters of a logistic model (the coefficients in the linear or non linear combinations). In binary logistic regression there is a single binary dependent variable, coded by an indicator variable, where the two values are labeled "0" and "1", while the independent variables can each be a binary variable (two classes, coded by an indicator variable) or a continuous variable (any real value). The corresponding probability of the value labeled "1" can vary between 0 (certainly the value "0") and 1 (certainly the value "1"), hence the labeling; the function that converts log-odds to probability is the logistic function, hence the name. The unit of measurement for the log-odds scale is called a logit, from logistic unit, hence the alternative names. See § Background and § Definition for formal mathematics, and § Example for a worked example.
+Binary variables are widely used in statistics to model the probability of a certain class or event taking place, such as the probability of a team winning, of a patient being healthy, etc. (see § Applications), and the logistic model has been the most commonly used model for binary regression since about 1970. Binary variables can be generalized to categorical variables when there are more than two possible values (e.g. whether an image is of a cat, dog, lion, etc.), and the binary logistic regression generalized to multinomial logistic regression. If the multiple categories are ordered, one can use the ordinal logistic regression (for example the proportional odds ordinal logistic model). See § Extensions for further extensions. The logistic regression model itself simply models probability of output in terms of input and does not perform statistical classification (it is not a classifier), though it can be used to make a classifier, for instance by choosing a cutoff value and classifying inputs with probability greater than the cutoff as one class, below the cutoff as the other; this is a common way to make a binary classifier.
+Analogous linear models for binary variables with a different sigmoid function instead of the logistic function (to convert the linear combination to a probability) can also be used, most notably the probit model; see § Alternatives. The defining characteristic of the logistic model is that increasing one of the independent variables multiplicatively scales the odds of the given outcome at a constant rate, with each independent variable having its own parameter; for a binary dependent variable this generalizes the odds ratio. More abstractly, the logistic function is the natural parameter for the Bernoulli distribution, and in this sense is the "simplest" way to convert a real number to a probability.
+The parameters of a logistic regression are most commonly estimated by maximum-likelihood estimation (MLE). This does not have a closed-form expression, unlike linear least squares; see § Model fitting. Logistic regression by MLE plays a similarly basic role for binary or categorical responses as linear regression by ordinary least squares (OLS) plays for scalar responses: it is a simple, well-analyzed baseline model; see § Comparison with linear regression for discussion. The logistic regression as a general statistical model was originally developed and popularized primarily by Joseph Berkson, beginning in Berkson (1944), where he coined "logit"; see § History.
+
+
+== Applications ==
+
+
+=== General ===
+Logistic regression is used in various fields, including machine learning, most medical fields, and social sciences. For example, the Trauma and Injury Severity Score (TRISS), which is widely used to predict mortality in injured patients, was originally developed by Boyd et al. using logistic regression.  Many other medical s
+
+In statistical modeling, regression analysis is a statistical method for estimating the relationship between a dependent variable (often called the outcome or response variable, or a label in machine learning parlance) and one or more independent variables (often called regressors, predictors, covariates, explanatory variables or features).
+The most common form of regression analysis is linear regression, in which one finds the line (or a more complex linear combination) that most closely fits the data according to a specific mathematical criterion. For example, the method of ordinary least squares computes the unique line (or hyperplane) that minimizes the sum of squared differences between the true data and that line (or hyperplane). For specific mathematical reasons (see linear regression), this allows the researcher to estimate the conditional expectation (or population average value) of the dependent variable when the independent variables take on a given set of values. Less common forms of regression use slightly different procedures to estimate alternative location parameters (e.g., quantile regression or Necessary Condition Analysis) or estimate the conditional expectation across a broader collection of non-linear models (e.g., nonparametric regression).
+Regression analysis is primarily used for two conceptually distinct purposes. First, regression analysis is widely used for prediction and forecasting, where its use has substantial overlap with the field of machine learning. Second, in some situations regression analysis can be used to infer causal relationships between the independent and dependent variables. Importantly, regressions by themselves only reveal relationships between a dependent variable and a collection of independent variables in a fixed dataset. To use regressions for prediction or to infer causal relationships, respectively, a researcher must carefully justify why existing relationships have predictive power for a new context or why a relationship between two variables has a causal interpretation. The latter is especially important when researchers hope to estimate causal relationships using observational data.
+
+
+== History ==
+The earliest regression form was seen in Isaac Newton's work in 1700 while studying equinoxes, being credited with introducing "an embryonic linear regression analysis" as "not only did he perform the averaging of a set of data, 50 years before Tobias Mayer, but by summing the residuals to zero he forced the regression line to pass through the average point. He also distinguished between two inhomogeneous sets of data and might have thought of an optimal solution in terms of bias, though not in terms of effectiveness." He previously used an averaging method in his 1671 work on Newton's rings, which was unprecedented at the time. 
+The method of least squares was published by Legendre in 1805, and by Gauss in 1809. Legendre and Gauss both applied the method to the problem of determining, from astronomical observations, the orbits of bodies about the Sun (mostly comets, but also later the then newly discovered minor planets). Gauss published a further development of the theory of least squares in 1821, including a version of the Gauss–Markov theorem.
+The term "regression" was coined by Francis Galton in the 19th century to describe a biological phenomenon. The phenomenon was that the heights of descendants of tall ancestors tend to regress down towards a normal average (a phenomenon also known as regression toward the mean).
+For Galton, regression had only this biological meaning, but his work was later extended by Udny Yule and Karl Pearson to a more general statistical context. In the work of Yule and Pearson, the joint distribution of the response and explanatory variables is assumed to be Gaussian. This assumption was weakened by R.A. Fisher in his works of 1922 and 1925. Fisher assumed that the conditional distribution of the response variable is Gaussian, but the joint dist
+
+A car, or an automobile, is a motor vehicle with wheels. Most definitions of cars state that they run primarily on roads, seat 1-8 people, have four wheels, and mainly transport people rather than cargo. There are over 1.6 billion cars in use worldwide as of  2025.
+The French inventor Nicolas-Joseph Cugnot built the first steam-powered road vehicle in 1769, while the Swiss inventor François Isaac de Rivaz designed and constructed the first internal combustion-powered automobile in 1808. The modern car—a practical, marketable automobile for everyday use—was invented in 1886, when the German inventor Carl Benz patented his Benz Patent-Motorwagen. Commercial cars became widely available during the 20th century. The 1901 Oldsmobile Curved Dash and the 1908 Ford Model T, both American cars, are widely considered the first mass-produced and mass-affordable cars, respectively. Cars were rapidly adopted in the US, where they replaced horse-drawn carriages. In Europe and other parts of the world, demand for automobiles did not increase until after World War II. In the 21st century, car usage is still increasing rapidly, especially in China, India, and other newly industrialised countries.
+Cars have controls for driving, parking, passenger comfort, and a variety of lamps. Over the decades, additional features and controls have been added to vehicles, making them progressively more complex. These include rear-reversing cameras, air conditioning, navigation systems, and in-car entertainment. Most cars in use in the early 2020s are propelled by an internal combustion engine, fueled by the combustion of fossil fuels. Electric cars, which were invented early in the history of the car, became commercially available in the 2000s and widespread in the 2020s. The transition from fossil-fuel-powered cars to electric cars is a central feature of most climate change mitigation scenarios.
+There are costs and benefits to car use. The costs to the individual include acquiring the vehicle, interest payments (if the car is financed), repairs and maintenance, fuel, depreciation, driving time, parking fees, taxes, and insurance. The costs to society include resources used to produce cars and fuel, maintaining roads, land-use, road congestion, air pollution, noise pollution, public health, and disposing of the vehicle at the end of its life. Traffic collisions are the largest cause of injury-related deaths worldwide. Personal benefits include on-demand transportation, mobility, independence, and convenience. Societal benefits include economic benefits, such as job and wealth creation from the automotive industry, transportation provision, and societal wellbeing from leisure and travel opportunities. People's ability to move flexibly from place to place has far-reaching implications for society.
+
+
+== Etymology ==
+The English word car is believed to originate from Latin carrus/carrum "wheeled vehicle" or (via Old North French) Middle English carre "two-wheeled cart", both of which in turn derive from Gaulish karros "chariot". It originally referred to any wheeled horse-drawn vehicle, such as a cart, carriage, or wagon. The word also occurs in other Celtic languages.
+"Motor car", attested from 1895, is the usual formal term in British English. "Autocar", a variant likewise attested from 1895 and literally meaning "self-propelled car", is now considered archaic. "Horseless carriage" is attested from 1895.
+"Automobile", a classical compound derived from Ancient Greek autós (αὐτός) "self" and Latin mobilis "movable", entered English from French and was first adopted by the Automobile Club of Great Britain in 1897. It fell out of favour in Britain and is now used chiefly in North America, where the abbreviated form "auto" commonly appears as an adjective in compound formations like "auto industry" and "auto mechanic".
+
+
+== History ==
+
+In 1649, Hans Hautsch of Nuremberg built a clockwork-driven carriage. The first steam-powered vehicle was designed by Ferdinand Ve
+
