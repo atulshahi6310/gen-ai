@@ -8,4 +8,5 @@ arxiv
 pymupdf
 wikipedia
 langchain-text-splitters
-langchain_text_splitter
+
+langchain-openai
